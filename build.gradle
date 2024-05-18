@@ -1,0 +1,78 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		//mavenCentral()
+		maven {
+			url = 'http://repo.sanlam.co.za/content/groups/public'
+			allowInsecureProtocol = true
+		}
+		maven {
+			url = 'http://deployables.sanlam.co.za/repository/sentrix-maven2-release-group/'
+			allowInsecureProtocol = true
+		}
+	}
+	dependencies {
+		classpath 'com.commercehub.gradle.plugin:gradle-avro-plugin:0.15.1'
+	}
+}
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.4.9'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'za.co.zalumabo'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '8'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url 'http://deployables.sanlam.co.za/repository/sentrix-maven2-release-group'
+		allowInsecureProtocol = true
+	}
+}
+
+ext {
+	set('springAiVersion', "0.8.1")
+	allowInsecureProtocol = true
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.h2database:h2'
+	//implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	compileOnly 'org.projectlombok:lombok'
+	//developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

@@ -1,0 +1,10 @@
+pluginManagement {
+    repositories {
+        maven {
+            url "http://deployables.sanlam.co.za/repository/sentrix-maven2-release-group/"
+            allowInsecureProtocol = true
+        }
+    }
+}
+
+rootProject.name = 'helloapi'
