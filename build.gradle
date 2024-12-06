@@ -1,15 +1,6 @@
 buildscript {
 	repositories {
 		mavenCentral()
-		//mavenCentral()
-		maven {
-			url = 'http://repo.sanlam.co.za/content/groups/public'
-			allowInsecureProtocol = true
-		}
-		maven {
-			url = 'http://deployables.sanlam.co.za/repository/sentrix-maven2-release-group/'
-			allowInsecureProtocol = true
-		}
 	}
 	dependencies {
 		classpath 'com.commercehub.gradle.plugin:gradle-avro-plugin:0.15.1'
@@ -36,10 +27,6 @@ configurations {
 
 repositories {
 	mavenCentral()
-	maven {
-		url 'http://deployables.sanlam.co.za/repository/sentrix-maven2-release-group'
-		allowInsecureProtocol = true
-	}
 }
 
 ext {
