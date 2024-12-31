@@ -1,0 +1,11 @@
+### POST new employee record
+
+POST http://zalu-person-api-env.eba-4azc3apq.eu-north-1.elasticbeanstalk.com/api/v1/employees HTTP/1.1
+//accept: application/json
+Content-Type: application/json
+
+{
+"firstName": "S'buyelwe",
+"lastName": "Gwiji",
+"emailId": "sbuyelwe.gwiji@gmail.com"
+}

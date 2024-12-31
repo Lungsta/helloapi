@@ -9,7 +9,7 @@ import za.co.zalumabo.helloapi.repository.EmployeeRepository;
 public class EmployeeService {
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     public Employee updateEmployee (Employee employee, Employee employeeDetails) {
         employee.setFirstName(employeeDetails.getFirstName());

@@ -15,7 +15,7 @@ version = '0.0.1-SNAPSHOT'
 java {
 	//sourceCompatibility = '8'
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(23)
+		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
 
